@@ -13,16 +13,14 @@ function Home() {
         />
         <div className="home__row">
           <Product
-            key={Math.random()}
-            id="5347854378"
+            id="12321341"
             title="Chainsaw Man by Tatsuki Fujimoto (Vol.1)"
             price={396}
             rating={4}
             image="https://i.pinimg.com/474x/2c/88/f1/2c88f165b1509f5c8f2d61d6db142901.jpg"
           />
           <Product
-            key={Math.random()}
-            id="56124123564"
+            id="49538094"
             title="Kimi wa Houkago Insomnia by Makoto Ojiro (Vol.8)"
             price={450}
             rating={5}
@@ -31,24 +29,21 @@ function Home() {
         </div>
         <div className="home__row">
           <Product
-            key={Math.random()}
-            id="78978"
+            id="4903850"
             title="Apple iPhone 13 Pro Max (128GB) - Sierra Blue"
             price={126900}
             rating={4}
             image="https://i.pinimg.com/474x/48/50/67/485067d9570ba3f9a3cfd9c80dd38924.jpg"
           />
           <Product
-            key={Math.random()}
-            id="232435"
+            id="23445930"
             title="2021 Apple iMac with 4.5K Retina Display - Blue "
             price={156700}
             rating={3}
             image="https://i.pinimg.com/474x/51/7d/93/517d938e3adb602d8e41f93206dfd2bd.jpg"
           />
           <Product
-            key={Math.random()}
-            id="655765"
+            id="3254354345"
             title="Samsung Galaxy M21 2021 Edition - Charcol Black"
             price={11499}
             rating={2}
@@ -57,7 +52,6 @@ function Home() {
         </div>
         <div className="home__row">
           <Product
-            key={Math.random()}
             id="90829332"
             title="Samsung LC49RG90SSUXEN 49' Curved LED Gaming Monitor - Super Ultra Wide Dual WQHD 5120 x 1440"
             price={109498}

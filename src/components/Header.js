@@ -27,10 +27,12 @@ function Header() {
           English
           <ArrowDropDownIcon fontSize="small" />
         </Button>
-        <div className="header__option">
-          <span className="header__optionLine1">Hello, user</span>
-          <span className="header__optionLine2">Accounts and Lists</span>
-        </div>
+        <Link to="/login">
+          <div className="header__option">
+            <span className="header__optionLine1">Hello, user</span>
+            <span className="header__optionLine2">Accounts and Lists</span>
+          </div>
+        </Link>
         <div className="header__option">
           <span className="header__optionLine1">Returns</span>
           <span className="header__optionLine2">and Orders</span>

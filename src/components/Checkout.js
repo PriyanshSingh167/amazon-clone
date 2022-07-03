@@ -2,21 +2,21 @@ import React from "react";
 import "../styles/Checkout.css";
 import Subtotal from "./Subtotal";
 import { useStateValue } from "../context/StateProvider";
-import Product from "./Product";
+import CheckoutProduct from "./CheckoutProduct";
 function Checkout() {
   const [{ basket }, dispatch] = useStateValue();
-  const createEntry = (item) => {
-    return (
-      <Product
-        key={item.id}
-        id={item.id}
-        title={item.title}
-        price={item.price}
-        rating={item.rating}
-        image={item.image}
-      />
-    );
-  };
+  // const createEntry = (item) => {
+  //   return (
+  //     <CheckoutProduct
+  //       key={item.id}
+  //       id={item.id}
+  //       title={item.title}
+  //       price={item.price}
+  //       rating={item.rating}
+  //       image={item.image}
+  //     />
+  //   );
+  // };
   return (
     <div className="checkout">
       <div className="checkout__left">
@@ -28,7 +28,18 @@ function Checkout() {
 
         <div>
           <h2 className="checkout__title">Your Shopping cart</h2>
-          <div className="checkout__items">{basket.map(createEntry)}</div>
+          <div className="checkout__items">
+            {basket.map((item) => (
+              <CheckoutProduct
+                key={item.id}
+                id={item.id}
+                title={item.title}
+                price={item.price}
+                rating={item.rating}
+                image={item.image}
+              />
+            ))}
+          </div>
         </div>
       </div>
       <div className="checkout__right">

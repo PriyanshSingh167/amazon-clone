@@ -90,3 +90,7 @@
   margin-right: 10px;
   color: white;
 }
+
+.header__optionLine2 {
+  text-decoration: none;
+}
