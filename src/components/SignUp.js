@@ -1,25 +1,22 @@
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "../styles/Login.css";
 import Button from "@mui/material/Button";
-
-function Login() {
+function SignUp() {
   const [formData, setFormData] = useState({
+    name: "",
     email: "",
     password: "",
   });
-  const { email, password } = formData;
 
-  const navigate = useNavigate();
+  const { email, password, name } = formData;
 
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.id]: e.target.value,
     }));
-  };
-  const onClick = () => {
-    navigate();
   };
 
   return (
@@ -32,8 +29,16 @@ function Login() {
         />
       </Link>
       <div className="login__container">
-        <h1>Sign-In</h1>
+        <h1>Sign-Up</h1>
         <form action="">
+          <h5>Name</h5>
+          <input
+            type="text"
+            className="nameInput"
+            id="name"
+            value={name}
+            onChange={onChange}
+          />
           <h5>E-mail</h5>
           <input type="email" value={email} onChange={onChange} id="email" />
           <h5>Password</h5>
@@ -43,21 +48,17 @@ function Login() {
             id="password"
             onChange={onChange}
           />
-          <Button
-            variant="contained"
-            className="login__signInButton"
-            onClick={onClick}
-            type="submit"
-          >
-            Sign-In
-          </Button>
         </form>
         <p>
           By continuing, you agree to Amazon's Conditions of Use and Privacy
           Notice.
         </p>
         <Link to="/sign-up">
-          <Button variant="contained" className="login__signInButton">
+          <Button
+            variant="contained"
+            className="login__signInButton"
+            // onClick={signUp}
+          >
             Sign-up
           </Button>
         </Link>
@@ -66,4 +67,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default SignUp;
