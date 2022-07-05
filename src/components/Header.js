@@ -1,13 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useStateValue } from "../context/StateProvider";
+import { getAuth } from "firebase/auth";
 import "../styles/Header.css";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Button from "@mui/material/Button";
-import { useStateValue } from "../context/StateProvider";
-import { Link } from "react-router-dom";
 function Header() {
-  const [{ basket }] = useStateValue();
+  // eslint-disable-next-line
+  const [{ basket, user }, dispatch] = useStateValue();
+  const auth = getAuth();
+  const handleAuth = () => {
+    if (user) {
+      auth.signOut();
+    }
+  };
   return (
     <div className="header">
       <Link to="/">
@@ -27,10 +35,17 @@ function Header() {
           English
           <ArrowDropDownIcon fontSize="small" />
         </Button>
-        <Link to="/login">
-          <div className="header__option">
-            <span className="header__optionLine1">Hello, user</span>
-            <span className="header__optionLine2">Accounts and Lists</span>
+        <Link to={!user && "/login"}>
+          <div className="header__option" onClick={handleAuth}>
+            <span className="header__optionLine1">
+              Hello,{" "}
+              <strong style={{ color: "#F8F9D7" }}>
+                {user ? auth.currentUser.displayName : "Guest"}
+              </strong>
+            </span>
+            <span className="header__optionLine2">
+              {user ? "Sign Out" : "Sign-In"}
+            </span>
           </div>
         </Link>
         <div className="header__option">

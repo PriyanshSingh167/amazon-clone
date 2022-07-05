@@ -4,6 +4,7 @@ import Subtotal from "./Subtotal";
 import { useStateValue } from "../context/StateProvider";
 import CheckoutProduct from "./CheckoutProduct";
 function Checkout() {
+  // eslint-disable-next-line
   const [{ basket }, dispatch] = useStateValue();
   // const createEntry = (item) => {
   //   return (

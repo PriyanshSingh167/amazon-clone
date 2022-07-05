@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import "../styles/Login.css";
 import Button from "@mui/material/Button";
 
@@ -18,8 +19,25 @@ function Login() {
       [e.target.id]: e.target.value,
     }));
   };
-  const onClick = () => {
-    navigate();
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const auth = getAuth();
+
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      if (userCredential.user) {
+        navigate("/");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -32,25 +50,32 @@ function Login() {
         />
       </Link>
       <div className="login__container">
-        <h1>Sign-In</h1>
-        <form action="">
+        <form onSubmit={onSubmit}>
+          <h1>Sign-In</h1>
           <h5>E-mail</h5>
-          <input type="email" value={email} onChange={onChange} id="email" />
+          <input
+            type="email"
+            placeholder="Email"
+            id="email"
+            value={email}
+            onChange={onChange}
+          />
           <h5>Password</h5>
           <input
             type="password"
-            value={password}
+            placeholder="Password"
             id="password"
+            value={password}
             onChange={onChange}
           />
-          <Button
+          {/* <Button
             variant="contained"
             className="login__signInButton"
-            onClick={onClick}
             type="submit"
           >
             Sign-In
-          </Button>
+          </Button> */}
+          <button className="login__signInButton">Sign-In</button>
         </form>
         <p>
           By continuing, you agree to Amazon's Conditions of Use and Privacy
